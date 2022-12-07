@@ -10,18 +10,17 @@ export default function App() {
 
   
 
- /*  useEffect(() => {
-    if (searchText === '') {
-      setList(results);
+  useEffect(() => {
+    if (searchText != '') {
+      fetch(
+        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchText}&api-key=Ag5Yo8StAwPyGMRYAyiAAYGljIf1azyV`
+      )
+        .then(response => response.json())
+        .then(data => setList(data.response.docs));
     } else {
-      setList(
-        results.filter(
-          (item) =>
-            item.name.toLowerCase().indexOf(searchText.toLowerCase()) > -1
-        )
-      );
+      
     }
-  }, [searchText]); */
+  }, [searchText]); 
 
   return (
     <View style={styles.container}>

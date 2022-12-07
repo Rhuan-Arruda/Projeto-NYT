@@ -13,7 +13,6 @@ const Artigos = () => {
     )
       .then(response => response.json())
       .then(data => setArtigo(data.response.docs));
-    console.log(artigo);
   }, []);
 
   return (
