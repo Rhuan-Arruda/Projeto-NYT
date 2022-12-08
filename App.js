@@ -2,38 +2,16 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import Artigos from "./components/Artigos";
+import Filtro from "./components/Filtro";
 
 
 export default function App() {
-  const [searchText, setSearchText] = useState('');
-  const [list, setList] = useState();
-
   
-
-  useEffect(() => {
-    if (searchText != '') {
-      fetch(
-        `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchText}&api-key=Ag5Yo8StAwPyGMRYAyiAAYGljIf1azyV`
-      )
-        .then(response => response.json())
-        .then(data => setList(data.response.docs));
-    } else {
-      
-    }
-  }, [searchText]); 
-
+  
   return (
     <View style={styles.container}>
-      <View style={styles.searchArea}>
-        <TextInput
-          style={styles.input}
-          placeholder="Pesquise uma notícia"
-          placeholderTextColor="#888"
-          value={searchText}
-          onChangeText={(t) => setSearchText(t)}
-        />
-      </View>
-      <Artigos />
+      <Filtro/>
+      
       <StatusBar hidden />
     </View>
   );
