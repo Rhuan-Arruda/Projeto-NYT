@@ -4,14 +4,25 @@ import React, { useEffect, useState } from "react";
 import Artigos from "./components/Artigos";
 import Filtro from "./components/Filtro";
 
-
 export default function App() {
-  
-  
+  const [pesquisa, setPesquisa] = useState("");
+
   return (
     <View style={styles.container}>
-      <Filtro/>
-      
+      <View style={styles.searchArea}>
+        <TextInput
+          style={styles.input}
+          placeholder="Pesquise uma notícia"
+          placeholderTextColor="#888"
+          value={pesquisa}
+          onChangeText={(t) => setPesquisa(t)}
+        />
+      </View>
+
+      {
+        pesquisa != '' ? <Filtro busca={pesquisa}/> : <Artigos/>
+      }
+
       <StatusBar hidden />
     </View>
   );
@@ -25,22 +36,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    alignContent: 'center',
+    alignContent: "center",
     padding: 20,
     height: 30,
     width: 30,
   },
   text: {
-    color: 'white',
+    color: "white",
     fontSize: 42,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    backgroundColor: '#000000a0',
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000a0",
   },
   stretch: {
     width: 50,
     height: 200,
-    resizeMode: 'stretch',
+    resizeMode: "stretch",
   },
   input: {
     flex: 1,
@@ -54,7 +65,7 @@ const styles = StyleSheet.create({
     paddingRight: 15,
   },
   searchArea: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
