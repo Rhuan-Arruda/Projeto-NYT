@@ -6,7 +6,6 @@ import uuid from "react-native-uuid"
 
 const Filtro = ({ busca }) => {
   const [lista, setLista] = useState();
-  console.log(busca)
 
   useEffect(() => {
     fetch(

@@ -6,7 +6,7 @@ const Artigos = () => {
   let ano = 2022;
   let mes = 12;
   const [artigo, setArtigo] = useState([]);
-  
+
   useEffect(() => {
     fetch(
       `https://api.nytimes.com/svc/archive/v1/${ano}/${mes}.json?api-key=Ag5Yo8StAwPyGMRYAyiAAYGljIf1azyV`

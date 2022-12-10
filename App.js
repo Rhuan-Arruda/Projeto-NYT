@@ -3,6 +3,7 @@ import { StyleSheet, View, TextInput } from "react-native";
 import React, { useEffect, useState } from "react";
 import Artigos from "./components/Artigos";
 import Filtro from "./components/Filtro";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 export default function App() {
   const [pesquisa, setPesquisa] = useState("");
@@ -17,10 +18,12 @@ export default function App() {
           value={pesquisa}
           onChangeText={(t) => setPesquisa(t)}
         />
+        <Icon name="search" size={22} color="#999" style={styles.icon} />
+
       </View>
 
       {
-        pesquisa != '' ? <Filtro busca={pesquisa}/> : <Artigos/>
+        pesquisa != '' ? <Filtro busca={pesquisa} /> : <Artigos />
       }
 
       <StatusBar hidden />
@@ -67,5 +70,9 @@ const styles = StyleSheet.create({
   searchArea: {
     flexDirection: "row",
     alignItems: "center",
+  },
+  icon: {
+    paddingRight: 15,
+    paddingTop: 50,
   },
 });
