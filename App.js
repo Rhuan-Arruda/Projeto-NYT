@@ -6,28 +6,28 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Artigos from "./components/Artigos";
 import Filtro from "./components/Filtro";
 import Icon from "react-native-vector-icons/FontAwesome";
-import InputFiltro from "./components/InputFiltro";
 
 export default function App() {
   const [pesquisa, setPesquisa] = useState("");
-  const [botao, setBotao] = useState("");
+  const [botao, setBotao] = useState(1);
+  const [qtd, setQtd] = useState(0);
 
   return (
     <View style={styles.container}>
-      
-          <Image
-            style={styles.tinyLogo}
-            source={{
-              uri: "https://1000logos.net/wp-content/uploads/2017/04/New-York-Times-logo.png",
-            }}
-          />
-        
+
+      <Image
+        style={styles.tinyLogo}
+        source={{
+          uri: "https://1000logos.net/wp-content/uploads/2017/04/New-York-Times-logo.png",
+        }}
+      />
+
       <View style={styles.searchArea}>
-        
+
         <TextInput
           style={styles.input}
           placeholder="Pesquise uma notícia"
@@ -35,14 +35,14 @@ export default function App() {
           value={pesquisa}
           onChangeText={(t) => setPesquisa(t)}
         />
-        <TouchableOpacity onPress={() => setBotao("click")}>
+        <TouchableOpacity onPress={() => setBotao(botao + 1)}>
           <Icon name="filter" size={22} color="#999" style={styles.icon} />
         </TouchableOpacity>
 
-        {botao == "click" ? <InputFiltro /> : () => setBotao("")}
+        {botao % 2 == 0 ? <TextInput value={qtd} onChangeText={(n) => setQtd(n)} style={styles.inputNum} placeholder='Quantidade de artigos:' keyboardType="numeric" /> : () => setBotao(botao + 1)}
       </View>
 
-      {pesquisa != "" ? <Filtro busca={pesquisa} /> : <Artigos />}
+      {pesquisa != "" ? <Filtro busca={pesquisa} /> : <Artigos qtd={qtd} />}
 
       <StatusBar hidden />
     </View>
@@ -78,6 +78,17 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
     fontSize: 19,
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
+  inputNum: {
+    marginTop: 10,
+    height: 50,
+    width: 110,
+    borderWidth: 1,
+    margin: 10,
+    borderRadius: 5,
+    fontSize: 15,
     paddingLeft: 15,
     paddingRight: 15,
   },

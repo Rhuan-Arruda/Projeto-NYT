@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { TouchableOpacity, View, Text, StyleSheet, Linking } from 'react-native';
 
 const Card = ({ data }) => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, StyleSheet, SafeAreaView } from "react-native";
+import { FlatList, SafeAreaView } from "react-native";
 import Card from "../Card";
 import uuid from "react-native-uuid"
 
